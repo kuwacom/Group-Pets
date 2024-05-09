@@ -226,9 +226,9 @@ public class GroupPetsCommand extends BaseCommand {
                 continue;
 
             if (pet instanceof Wolf)
-                ((Wolf) pet).setSitting(true);
+                ((Wolf) pet).setSitting(isSitting);
             else if (pet instanceof Cat)
-                ((Cat) pet).setSitting(true);
+                ((Cat) pet).setSitting(isSitting);
         }
     }
 }
