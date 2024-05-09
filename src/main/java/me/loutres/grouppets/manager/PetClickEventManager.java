@@ -2,7 +2,6 @@ package me.loutres.grouppets.manager;
 
 import me.loutres.grouppets.Plugin;
 import me.loutres.grouppets.data.PetGroupEntity;
-import me.loutres.grouppets.util.Util;
 import org.bukkit.entity.Cat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;

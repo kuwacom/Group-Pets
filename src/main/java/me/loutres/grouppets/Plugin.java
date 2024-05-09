@@ -1,7 +1,6 @@
 package me.loutres.grouppets;
 
 import co.aikar.commands.ConditionFailedException;
-import lombok.NonNull;
 import me.loutres.grouppets.command.GroupPetsCommand;
 import co.aikar.commands.BukkitCommandManager;
 import me.loutres.grouppets.data.PetGroupRepository;

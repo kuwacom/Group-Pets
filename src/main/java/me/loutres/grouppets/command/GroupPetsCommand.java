@@ -7,7 +7,6 @@ import me.loutres.grouppets.data.PetGroupEntity;
 import me.loutres.grouppets.data.PetGroupRepository;
 import me.loutres.grouppets.manager.PetClickEventManager;
 import me.loutres.grouppets.util.Util;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Cat;
 import org.bukkit.entity.Entity;
