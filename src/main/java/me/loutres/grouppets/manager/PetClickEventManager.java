@@ -36,6 +36,9 @@ public class PetClickEventManager implements Listener {
                     return;
                 }
 
+                if (!event.getPlayer().isSneaking())
+                    return;
+
                 PetGroupEntity entity = getPetGroup(event.getPlayer(), wolf.getUniqueId());
                 if (entity==null)
                     return;
@@ -63,6 +66,9 @@ public class PetClickEventManager implements Listener {
                     handler.run(cat);
                     return;
                 }
+
+                if (!event.getPlayer().isSneaking())
+                    return;
 
                 PetGroupEntity entity = getPetGroup(event.getPlayer(), cat.getUniqueId());
                 if (entity==null)
