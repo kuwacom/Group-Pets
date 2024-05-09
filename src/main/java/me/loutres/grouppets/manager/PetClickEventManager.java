@@ -26,7 +26,7 @@ public class PetClickEventManager implements Listener {
     public void onPetClick(PlayerInteractEntityEvent event) {
         if (event.getRightClicked() instanceof Wolf wolf) {
 
-            if (wolf.isTamed() && wolf.getOwner().equals(event.getPlayer())) {
+            if (wolf.isTamed() && wolf.getOwner()!=null && wolf.getOwner().equals(event.getPlayer())) {
                 if (petClickWaiting.containsKey(event.getPlayer())) {
                     PetClickWaitHandler handler = petClickWaiting.get(event.getPlayer());
                     petClickWaiting.remove(event.getPlayer());
@@ -53,8 +53,8 @@ public class PetClickEventManager implements Listener {
                             }
                         });
             }
-            if (cat.isTamed() && cat.getOwner().equals(event.getPlayer())) {
         } else if (event.getRightClicked() instanceof Cat cat) {
+            if (cat.isTamed() && cat.getOwner()!=null && cat.getOwner().equals(event.getPlayer())) {
                 if (petClickWaiting.containsKey(event.getPlayer())) {
                     PetClickWaitHandler handler = petClickWaiting.get(event.getPlayer());
                     petClickWaiting.remove(event.getPlayer());
