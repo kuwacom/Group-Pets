@@ -64,14 +64,6 @@ public class PetGroupRepositoryImpl implements PetGroupRepository {
     }
 
     @Override
-    @NonNull
-    public List<PetGroupEntity> findAll() {
-        return entities.values().stream()
-                .map(PetGroupEntity::clone)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public void delete(@NonNull PetGroupEntity entity) {
         entities.remove(entity.getId());
         write();

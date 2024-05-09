@@ -9,6 +9,5 @@ public interface PetGroupRepository {
     void save(@NonNull PetGroupEntity entity);
     PetGroupEntity find(@NonNull String name, @NonNull UUID owner);
     List<PetGroupEntity> findByOwner(@NonNull UUID owner);
-    List<PetGroupEntity> findAll();
     void delete(@NonNull PetGroupEntity entity);
 }
