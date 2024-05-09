@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_20
+
+repositories {
+    maven { url = "https://repo.aikar.co/content/groups/aikar/" }
+    maven { url = "https://hub.spigotmc.org/nexus/content/groups/public/" }
+}
+
+configurations {
+    jarLibs
+}
+
+dependencies {
+    compileOnly "org.spigotmc:spigot-api:1.20.5-R0.1-SNAPSHOT"
+
+    jarLibs "co.aikar:acf-bukkit:0.5.1-SNAPSHOT"
+    implementation "co.aikar:acf-bukkit:0.5.1-SNAPSHOT"
+
+    jarLibs 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    jarLibs 'org.projectlombok:lombok:1.18.32'
+    implementation 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'jp.cron.app.Main'
+    }
+
+    from { (configurations.jarLibs).findAll { !it.name.endsWith('pom') }.collect { it.isDirectory() ? it : zipTree(it) } } {
+        exclude 'META-INF/*', 'META-INF/*.SF', 'META-INF/*.DSA'
+        exclude '*.pom'
+        duplicatesStrategy = 'EXCLUDE'
+    }
+}

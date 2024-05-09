@@ -1,0 +1,26 @@
+name: GroupPets
+version: '0.1'
+main: me.loutres.grouppets.Plugin
+api-version: 1.18
+load: POSTWORLD
+
+commands:
+  grouppets:
+    description: Main command for GroupPets
+permissions:
+  grouppets.create.group:
+    default: true
+  grouppets.delete.group:
+    default: true
+  grouppets.group.add:
+    default: true
+  grouppets.group.remove:
+    default: true
+  grouppets.group.list:
+    default: true
+  grouppets.group.sync:
+    default: true
+  grouppets.group.stand:
+    default: true
+  grouppets.group.sit:
+    default: true
