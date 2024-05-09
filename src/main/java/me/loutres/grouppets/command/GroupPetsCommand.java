@@ -127,17 +127,15 @@ public class GroupPetsCommand extends BaseCommand {
             if (pet == null)
                 continue;
 
-            String name = "";
+            String name;
             Integer health;
 
-            if (pet instanceof Wolf) {
-                Wolf wolf = (Wolf) pet;
+            if (pet instanceof Wolf wolf) {
                 name = "オオカミ";
                 if (wolf.getCustomName()!=null)
                     name = wolf.getCustomName();
                 health = (int) ((Wolf) pet).getHealth();
-            } else if (pet instanceof Cat) {
-                Cat cat = (Cat) pet;
+            } else if (pet instanceof Cat cat) {
                 name = "ネコ";
                 if (cat.getCustomName()!=null)
                     name = cat.getCustomName();
@@ -173,7 +171,7 @@ public class GroupPetsCommand extends BaseCommand {
         if (entity == null)
             return;
 
-        toggleSit(player, entity, true);
+        toggleSit(entity, true);
         Util.sendSuccessMessage(player, "グループ " + entity.getName() + " のペットを座らせました。");
     }
 
@@ -184,24 +182,25 @@ public class GroupPetsCommand extends BaseCommand {
         if (entity == null)
             return;
 
-        toggleSit(player, entity, false);
+        toggleSit(entity, false);
         Util.sendSuccessMessage(player, "グループ " + entity.getName() + " のペットを立たせました。");
     }
 
     @HelpCommand
     @Default
     private void sendHelp(CommandSender sender) {
-        String sb = "Usage: /grouppets <command> [args...]\n" +
-                "Commands:\n" +
-                "  create group <groupName> - グループを作成します。\n" +
-                "  delete group <groupName> - グループを削除します。\n" +
-                "  group add <groupName> - ペットをグループに追加します。\n" +
-                "  group remove <groupName> - ペットをグループから削除します。\n" +
-                "  group sit <groupName> - グループのペットを座らせます。\n" +
-                "  group stand <groupName> - グループのペットを立たせます。\n" +
-                "  group list - グループの一覧を表示します。\n" +
-                "  group list <groupName> - グループの詳細を表示します。\n" +
-                "  group sync <groupName> - グループのペットを同期します。";
+        String sb = """
+                Usage: /grouppets <command> [args...]
+                Commands:
+                  create group <groupName> - グループを作成します。
+                  delete group <groupName> - グループを削除します。
+                  group add <groupName> - ペットをグループに追加します。
+                  group remove <groupName> - ペットをグループから削除します。
+                  group sit <groupName> - グループのペットを座らせます。
+                  group stand <groupName> - グループのペットを立たせます。
+                  group list - グループの一覧を表示します。
+                  group list <groupName> - グループの詳細を表示します。
+                  group sync <groupName> - グループのペットを同期します。""";
         Util.sendMessage(sender, sb);
     }
 
@@ -220,7 +219,7 @@ public class GroupPetsCommand extends BaseCommand {
         return entity;
     }
 
-    private void toggleSit(Player player, PetGroupEntity entity, boolean isSitting) {
+    private void toggleSit(PetGroupEntity entity, boolean isSitting) {
         for (UUID petId : entity.getPets()) {
             Entity pet = plugin.getServer().getEntity(petId);
             if (pet==null)

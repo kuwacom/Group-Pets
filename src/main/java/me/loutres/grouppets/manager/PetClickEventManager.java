@@ -24,8 +24,7 @@ public class PetClickEventManager implements Listener {
 
     @EventHandler
     public void onPetClick(PlayerInteractEntityEvent event) {
-        if (event.getRightClicked() instanceof Wolf) {
-            Wolf wolf = (Wolf) event.getRightClicked();
+        if (event.getRightClicked() instanceof Wolf wolf) {
 
             if (wolf.isTamed() && wolf.getOwner().equals(event.getPlayer())) {
                 if (petClickWaiting.containsKey(event.getPlayer())) {
@@ -47,18 +46,15 @@ public class PetClickEventManager implements Listener {
                         .map(plugin.getServer()::getEntity)
                         .filter(Objects::nonNull)
                         .forEach(pet -> {
-                            if (pet instanceof Wolf) {
-                                Wolf wolfPet = (Wolf) pet;
+                            if (pet instanceof Wolf wolfPet) {
                                 wolfPet.setSitting(!wolf.isSitting());
-                            } else if (pet instanceof Cat) {
-                                Cat catPet = (Cat) pet;
+                            } else if (pet instanceof Cat catPet) {
                                 catPet.setSitting(!wolf.isSitting());
                             }
                         });
             }
-        } else if (event.getRightClicked() instanceof Cat) {
-            Cat cat = (Cat) event.getRightClicked();
             if (cat.isTamed() && cat.getOwner().equals(event.getPlayer())) {
+        } else if (event.getRightClicked() instanceof Cat cat) {
                 if (petClickWaiting.containsKey(event.getPlayer())) {
                     PetClickWaitHandler handler = petClickWaiting.get(event.getPlayer());
                     petClickWaiting.remove(event.getPlayer());
@@ -78,11 +74,9 @@ public class PetClickEventManager implements Listener {
                         .map(plugin.getServer()::getEntity)
                         .filter(Objects::nonNull)
                         .forEach(pet -> {
-                            if (pet instanceof Wolf) {
-                                Wolf wolfPet = (Wolf) pet;
+                            if (pet instanceof Wolf wolfPet) {
                                 wolfPet.setSitting(!cat.isSitting());
-                            } else if (pet instanceof Cat) {
-                                Cat catPet = (Cat) pet;
+                            } else if (pet instanceof Cat catPet) {
                                 catPet.setSitting(!cat.isSitting());
                             }
                         });
