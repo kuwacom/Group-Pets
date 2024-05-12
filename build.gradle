@@ -29,7 +29,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'jp.cron.app.Main'
+        attributes 'Main-Class': 'jp.kuwa.app.Main'
     }
 
     from { (configurations.jarLibs).findAll { !it.name.endsWith('pom') }.collect { it.isDirectory() ? it : zipTree(it) } } {

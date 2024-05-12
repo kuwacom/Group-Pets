@@ -1,8 +1,10 @@
 name: GroupPets
-version: '0.1'
+version: '1.0'
 main: me.loutres.grouppets.Plugin
 api-version: 1.18
 load: POSTWORLD
+author: kuwa-network
+website: https://kuwa.app/
 
 commands:
   grouppets:
